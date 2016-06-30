@@ -74,12 +74,11 @@ See [`client-backend`](client-backend/) and [`client-frontend`](client-frontend/
 ## Random stuff / gotchas
 
 1. "_Why is the Kontena project name named `f` and not the default `example-kontena-feature-branches`?_"
-   \- Kontena doesn't allow too long service names (noticed it while doing this example, issue opened in [GitHub](https://github.com/kontena/kontena/issues/825)). Note that `kontena-deploy.sh` scripts does not have a check for this.
+    - Kontena doesn't allow too long service names (noticed it while doing this example, issue opened in [GitHub](https://github.com/kontena/kontena/issues/825)). Note that `kontena-deploy.sh` scripts does not have a check for this.
 2. "_Why not list branches in root url `/` and run branches in `/branch-1/`, `/branch-2/` etc.?_"
-   \- Because then the `list-kontena-services` catches every request to it's subdomain. It is possible, but couldn't be bothered with it just yet. Possible solution in [StackOverFlow](http://stackoverflow.com/questions/30508644/haproxy-multiple-backends-accessed-with-same-path)
+    - Because then the `list-kontena-services` catches every request to it's subdomain. It is possible, but couldn't be bothered with it just yet. Possible solution in [StackOverFlow](http://stackoverflow.com/questions/30508644/haproxy-multiple-backends-accessed-with-same-path)
 3. "_Do I need to use Kontena with this?_"
-   \- No, this example should work with `docker-compose` and with any other container orchestration toolkit, even just with only Docker. You just have to implement `list-kontena-services` or ignore it.
-   But if you haven't tried Kontena before, you should definitely give it a shot because of how easy it is to use.
+    - No, this example should work with `docker-compose` and with any other container orchestration toolkit, even just with only Docker. You just have to implement `list-kontena-services` or ignore it. But if you haven't tried Kontena before, you should definitely give it a shot because of how easy it is to use.
 4. Docker doesn't like tags with slashes `/` in them, so you should name your branches without slashes
 5. Configuration:
     1. `kontena/lb`
