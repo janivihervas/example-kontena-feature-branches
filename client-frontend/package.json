@@ -1,0 +1,26 @@
+{
+  "name": "client-frontend",
+  "version": "1.0.0",
+  "description": "Client-side frontend",
+  "author": "Jani Viherväs",
+  "license": "MIT",
+  "bugs": "https://github.com/janivihervas/example-kontena-feature-branches/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janivihervas/example-kontena-feature-branches"
+  },
+  "config": {
+    "image": "example-kontena-feature-branches/client-frontend",
+    "registry_image": "registry.dev.kontena.local/example-kontena-feature-branches/client-frontend"
+  },
+  "scripts": {
+    "start": "http-server app -a localhost -p 8080 -o",
+    "docker:build": "docker build -t $npm_package_config_image .",
+    "docker:tag": "docker tag $npm_package_config_image $npm_package_config_registry_image:$(git rev-parse --abbrev-ref HEAD)",
+    "docker:push": "docker push $npm_package_config_registry_image:$(git rev-parse --abbrev-ref HEAD)",
+    "kontena:deploy": "./kontena-deploy.sh"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}

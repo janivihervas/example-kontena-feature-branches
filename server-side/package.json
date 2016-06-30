@@ -1,0 +1,29 @@
+{
+  "name": "server-side",
+  "version": "1.0.0",
+  "description": "Server-side",
+  "author": "Jani Viherväs",
+  "license": "MIT",
+  "bugs": "https://github.com/janivihervas/example-kontena-feature-branches/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janivihervas/example-kontena-feature-branches"
+  },
+  "main": "main.js",
+  "config": {
+    "image": "example-kontena-feature-branches/server-side",
+    "registry_image": "registry.dev.kontena.local/example-kontena-feature-branches/server-side"
+  },
+  "scripts": {
+    "start": "node main.js",
+    "docker:build": "docker build -t $npm_package_config_image .",
+    "docker:tag": "docker tag $npm_package_config_image $npm_package_config_registry_image:$(git rev-parse --abbrev-ref HEAD)",
+    "docker:push": "docker push $npm_package_config_registry_image:$(git rev-parse --abbrev-ref HEAD)",
+    "kontena:deploy": "./kontena-deploy.sh"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  }
+}

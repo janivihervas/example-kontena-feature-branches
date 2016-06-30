@@ -1,0 +1,28 @@
+{
+  "name": "list-kontena-services",
+  "version": "1.0.0",
+  "description": "Service for listing kontena services",
+  "author": "Jani Viherväs",
+  "license": "MIT",
+  "bugs": "https://github.com/janivihervas/example-kontena-feature-branches/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janivihervas/example-kontena-feature-branches"
+  },
+  "main": "main.js",
+  "config": {
+    "image": "example-kontena-feature-branches/list-kontena-services",
+    "registry_image": "registry.dev.kontena.local/example-kontena-feature-branches/list-kontena-services"
+  },
+  "scripts": {
+    "start": "node main.js",
+    "docker:build": "docker build -t $npm_package_config_image .",
+    "docker:tag": "docker tag $npm_package_config_image $npm_package_config_registry_image",
+    "docker:push": "docker push $npm_package_config_registry_image"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  }
+}

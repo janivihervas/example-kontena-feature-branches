@@ -1,0 +1,7 @@
+server-side:
+  image: registry.dev.kontena.local/example-kontena-feature-branches/server-side
+  environment:
+    - PORT=3000
+    - KONTENA_LB_INTERNAL_PORT=3000
+    - KONTENA_LB_KEEP_VIRTUAL_PATH=true
+    - NODE_ENV=production

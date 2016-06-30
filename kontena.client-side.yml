@@ -1,0 +1,37 @@
+version: '2'
+name: f
+services:
+  lb-client:
+    image: kontena/lb:latest
+    instances: 2
+    ports:
+      - 80:80
+
+  list-services-client:
+    extends:
+      file: list-services.yml
+      service: list-services
+    environment:
+      - KONTENA_LB_VIRTUAL_PATH=/services
+      - TITLE=Client side services
+      - REGEX=%{project}-client-frontend-((\w|-)+)
+    links:
+      - lb-client
+
+  client-backend:
+    image: registry.dev.kontena.local/example-kontena-feature-branches/client-backend:latest
+    environment:
+      - PORT=3000
+
+  client-frontend-master:
+    extends:
+      file: client-frontend.yml
+      service: client-frontend
+    image: registry.dev.kontena.local/example-kontena-feature-branches/client-frontend:master
+    environment:
+      - KONTENA_LB_VIRTUAL_PATH=/master
+      - API_HOST=%{project}-client-backend
+      - API_URL=http://%{project}-client-backend:3000/api/
+    links:
+      - client-backend
+      - lb-client

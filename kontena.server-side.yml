@@ -1,0 +1,29 @@
+version: '2'
+name: f
+services:
+  lb-server:
+    image: kontena/lb:latest
+    instances: 2
+    ports:
+      - 80:80
+
+  list-services-server:
+    extends:
+      file: list-services.yml
+      service: list-services
+    environment:
+      - KONTENA_LB_VIRTUAL_PATH=/services
+      - TITLE=Server side services
+      - REGEX=%{project}-server-side-((\w|-)+)
+    links:
+      - lb-server
+
+  server-side-master:
+    extends:
+      file: server-side.yml
+      service: server-side
+    image: registry.dev.kontena.local/example-kontena-feature-branches/server-side:master
+    environment:
+      - KONTENA_LB_VIRTUAL_PATH=/master
+    links:
+      - lb-server

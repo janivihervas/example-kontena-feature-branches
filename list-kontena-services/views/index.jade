@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title= title
+        meta(charset='UTF-8')
+    body
+        main
+            h1= title
+            if services.length > 0
+                ul
+                    each service in services
+                        li
+                            a(href='/' + service + '/') /#{service}/
+            else
+                span Could not find any services :(
