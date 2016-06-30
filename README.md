@@ -41,7 +41,7 @@ See [`client-backend`](client-backend/) and [`client-frontend`](client-frontend/
     - Create a Kontena Master
     - Create a Grid named `dev`
     - Create a Kontena Node
-    - Create a image reqistry
+    - Create a image registry
     - Create a vpn service
 3. Write following secrets to Kontena vault with `kontena vault write KEY VALUE`:
     - `KONTENA_URL`: this is the Kontena Master's url, run `kontena master current` and you get `<name> <url>`, pick `<url>`
@@ -49,22 +49,22 @@ See [`client-backend`](client-backend/) and [`client-frontend`](client-frontend/
       You can get your personal token for current Kontena Master from `~/.kontena_client.json`, it starts with `kontena-`.
     - `KONTENA_GRID`: `dev`
 4. Run 
-```
-npm run docker:build
-npm run docker:tag
-npm run docker:push
-```
+    ```
+    npm run docker:build
+    npm run docker:tag
+    npm run docker:push
+    ```
   in every folder
 5. To deploy client-side web app, run 
-```
-cd path/to/project
-kontena app deploy -f kontena.client-side.yml
-```
+    ```
+    cd path/to/project
+    kontena app deploy -f kontena.client-side.yml
+    ```
 6. To deploy server-side web app, run 
-```
-cd path/to/project
-kontena app deploy -f kontena.server-side.yml
-```
+    ```
+    cd path/to/project
+    kontena app deploy -f kontena.server-side.yml
+    ```
 7. Change the ports of the load balancer in one of the kontena configuration files if you want to run them simultaneously on a single node.
 8. Get the list of running containers by opening your browser to `<kontena-node-url>/services/`
 9. Your containerized branches will be running in `<kontena-node-url>/<branch>/`
