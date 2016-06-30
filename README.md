@@ -55,22 +55,19 @@ See [`client-backend`](client-backend/) and [`client-frontend`](client-frontend/
     npm run docker:tag
     npm run docker:push
     ```
-
-  in every folder
+    in every folder
 5. To deploy client-side web app, run 
 
     ```
     cd path/to/project
     kontena app deploy -f kontena.client-side.yml
     ```
-
 6. To deploy server-side web app, run 
 
    ```
    cd path/to/project
    kontena app deploy -f kontena.server-side.yml
    ```
-    
 7. Change the ports of the load balancer in one of the kontena configuration files if you want to run them simultaneously on a single node.
 8. Get the list of running containers by opening your browser to `<kontena-node-url>/services/`
 9. Your containerized branches will be running in `<kontena-node-url>/<branch>/`
@@ -88,7 +85,7 @@ See [`client-backend`](client-backend/) and [`client-frontend`](client-frontend/
 4. Docker doesn't like tags with slashes `/` in them, so you should name your branches without slashes
 5. Configuration:
     1. `kontena/lb`
-        - Environment variable `KONTENA_LB_KEEP_VIRTUAL_PATH=true` must to be set for links to JavaScript and CSS files and API calls
+        - Environment variable `KONTENA_LB_KEEP_VIRTUAL_PATH=true` must be set for links to JavaScript and CSS files and API calls
     2. nginx reverse proxy
         - `proxy_set_header Host` must be set for linked containers
         - Trailing slashes
